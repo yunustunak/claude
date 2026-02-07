@@ -18,7 +18,8 @@ A productivity skill for anyone who runs multiple parallel Claude conversations 
 ## 1. Chat Naming Convention
 
 ### When to trigger
-- **Every new conversation** — within the first 1-2 exchanges, before the conversation gets deep
+- **After 5-6 exchanges** — once the conversation has enough context to name accurately, suggest a name. Don't guess early when you don't know what the conversation will become.
+- **At a natural conclusion** — when a task wraps up, the user says "thanks", "that's great", or shifts to a new topic, suggest a name if one hasn't been given yet. Whichever of these two comes first.
 - **When asked** — "name this chat", "what should I call this"
 
 ### Format
