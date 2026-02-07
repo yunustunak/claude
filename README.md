@@ -12,32 +12,32 @@ These aren't polished products. They're working tools from someone who spends mo
 
 ---
 
-A collection of reusable skills for Claude Projects. Each skill is a set of instructions that gives Claude a specific capability. Paste it into a project's custom instructions and it just works.
+A collection of reusable skills for Claude. Each skill is a markdown file that gives Claude a specific capability. Install it once through Settings and it works across every conversation.
 
 ## What's a skill?
 
-A skill is a markdown file (`SKILL.md`) that teaches Claude how to do something specific. Unlike one-off prompts, skills are **persistent** — they live in your project and apply to every conversation within it. Think of them as plugins for Claude's behaviour.
+A skill is a markdown file (`SKILL.md`) that teaches Claude how to do something specific. Unlike one-off prompts, skills are **persistent and system-wide** — once installed, they apply to every conversation you have with Claude. Think of them as plugins for Claude's behaviour.
 
 Skills work best when they're:
 - **Triggered by natural language** — you shouldn't need to remember special commands
 - **Opinionated but configurable** — good defaults, easy to personalise
-- **Composable** — multiple skills can coexist in the same project
+- **Composable** — multiple skills can coexist, each triggering independently
 
 ## How to install a skill
 
-1. Open a **Claude Project** on [claude.ai](https://claude.ai) or the Claude app
-2. Go to **Project Knowledge** → **Add content** → **Add custom instructions**
-3. Paste the contents of the skill's `SKILL.md` file
+1. Open **Settings** in [claude.ai](https://claude.ai) or the Claude app
+2. Go to **Capabilities**
+3. Under **Skills**, click **Upload** or **Create** and add the skill's `SKILL.md` file
 
-You can install multiple skills in the same project by pasting them one after another into the custom instructions. Claude handles the rest.
+That's it. The skill is now active across all your conversations, system-wide. No need to reinstall per project.
 
 ## Using multiple skills together
 
-Claude Projects support up to ~15,000 words of custom instructions. Most skills are 1,000-2,000 words, so you can comfortably stack 5-8 skills in a single project. A few tips:
+Skills are system-wide and trigger independently based on context. A few things to know:
 
 - **No conflicts** — skills are designed to trigger on different phrases and contexts, so they stay out of each other's way
 - **Shared memory** — skills that use Claude's memory (like chat-hygiene) share the same 30-slot memory space, so be mindful of capacity if several skills write to memory
-- **Project scoping** — memory and conversation history are scoped per project, so a skill installed in your "Work" project won't see conversations from your "Personal" project
+- **System-wide by default** — once installed, a skill applies everywhere. If you only want a skill active in a specific context, you can also paste skill content into a project's custom instructions instead
 
 ## Available Skills
 
@@ -58,8 +58,8 @@ If you've built a skill that works well for you and could help others, contribut
 
 ## Requirements
 
-- Claude Pro, Team, or Enterprise plan (needs access to Projects)
-- Works with any Claude model available in Projects
+- Claude Pro, Team, or Enterprise plan (needs access to Skills in Settings → Capabilities)
+- Works with any Claude model
 
 ## License
 
