@@ -10,11 +10,11 @@ If you use Claude heavily — running multiple conversations in parallel across 
 
 ## Installation
 
-1. Open a **Claude Project** (on claude.ai or the Claude app)
-2. Go to **Project Knowledge** → **Add content** → **Add custom instructions**
-3. Paste the contents of `SKILL.md` into the custom instructions
+1. Open **Settings** in [claude.ai](https://claude.ai) or the Claude app
+2. Go to **Capabilities**
+3. Under **Skills**, click **Upload** or **Create** and add the `SKILL.md` file
 
-That's it. Claude will start suggesting chat names and will respond to "daily summary" or "wrap up" by generating a comprehensive summary.
+That's it. The skill is now active across all your conversations. Claude will start suggesting chat names and will respond to "daily summary" or "wrap up" by generating a comprehensive summary.
 
 ## Personalisation
 
@@ -78,7 +78,7 @@ _Covering activity since: 06.02.2026_
 
 ## Works Best With
 
-- Claude Pro, Team, or Enterprise (needs Projects)
+- Claude Pro, Team, or Enterprise (needs access to Skills)
 - Heavy parallel conversation usage (5+ chats/day)
 - People who context-switch between multiple work streams
 
