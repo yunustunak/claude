@@ -68,7 +68,7 @@ If the purpose is unclear:
    - Open threads or next steps
    - Skip trivial interactions (quick lookups, single-question answers, simple factual queries)
 
-3. **Determine categories**: Use the user's preferred categories if they've been set (check memory). Otherwise, infer 3-6 sensible categories from the conversations found. Good categories are based on projects, life areas, or work streams — not content types.
+3. **Determine categories**: Use the user's preferred categories if they've been set (check memory). Otherwise, infer 3-6 sensible categories from the conversations found. Since this skill runs system-wide, expect a broad spread of topics across work, personal, and side projects. Group by life area or work stream, not by content type. Aim for categories that would make sense as chapter headings in a weekly review.
 
 4. **Produce markdown summary** following the template below.
 
@@ -168,28 +168,32 @@ Use the `memory_user_edits` tool to add a concise note. Format:
 - When in doubt, log it — it's easier to remove than to forget
 
 ### Memory capacity management
-- Memory edits have a 30-line limit
+- Memory edits have a 30-line limit shared across everything — this skill, other skills, and any manual memory edits
+- Be conservative: only log artifacts that genuinely need to be findable later
 - Output logs should be periodically consolidated into daily summaries and then removed
-- If approaching the limit, suggest a cleanup: consolidate old output logs into a summary note
+- If approaching 20 slots used, proactively suggest a cleanup: consolidate old output logs into a summary note and remove individual entries
+- Check memory state before every write, not just for duplicates but for remaining capacity
 
 ---
 
 ## Customisation
 
-Users can personalise this skill by telling Claude any of the following (which will be saved to memory):
+This skill runs system-wide across all your conversations. Users can personalise it by telling Claude any of the following (which will be saved to memory):
 
 - **Custom categories**: "My summary categories should be: Work, Freelance, Learning, Home"
 - **Date format preference**: The default is `DDMMYY` but users can request ISO (`YYYY-MM-DD`) or US (`MMDDYY`) format
 - **Summary frequency**: Some users prefer weekly rather than daily summaries
 - **Category emojis**: Users can specify their preferred emoji for each category
 - **Skip patterns**: Additional types of conversations to skip in summaries
+- **Selective features**: "I only want chat naming, not the memory logging" or "skip naming for quick chats under 3 messages"
 
 ---
 
 ## Integration Notes
 
-- This skill works alongside Claude's memory system and the `recent_chats` / `conversation_search` tools
+- This skill runs system-wide and works alongside Claude's memory system and the `recent_chats` / `conversation_search` tools
 - Chat naming should feel natural, not bureaucratic — it's a quick suggestion, not a blocker
-- Daily summaries are the **primary retrieval mechanism** — they should be thorough enough to serve as a log weeks later
+- Daily summaries pull from all conversations across all contexts, so they serve as a unified log of everything you worked on
+- Note: if the user is inside a Claude Project, `recent_chats` and `conversation_search` are scoped to that project only. Summaries generated from within a project will only cover that project's conversations. For a full cross-context summary, generate it from a standalone conversation outside any project
 - The memory logging creates breadcrumbs that help Claude find past work even without summaries
 - This skill is designed for heavy Claude users who run 5-20+ conversations per day, but works just as well for lighter usage
