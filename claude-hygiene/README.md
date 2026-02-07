@@ -30,8 +30,9 @@ Claude will save these preferences to memory and apply them going forward.
 
 | What you say | What happens |
 |---|---|
-| *(start a new conversation)* | Claude suggests a chat name |
-| "name this chat" | Claude suggests a chat name |
+| *(conversation reaches 5-6 exchanges)* | Claude suggests a chat name based on what actually happened |
+| *(task wraps up naturally)* | Claude suggests a chat name if one hasn't been set |
+| "name this chat" | Claude suggests a chat name on demand |
 | "daily summary" / "wrap up" / "what did we do today" | Claude generates a dated summary of all work since the last summary |
 | *(produce a significant artifact)* | Claude logs it to memory automatically |
 
@@ -81,6 +82,12 @@ _Covering activity since: 06.02.2026_
 - Heavy parallel conversation usage (5+ chats/day)
 - People who context-switch between multiple work streams
 
+## Known Limitations
+
+- **Chat naming doesn't always trigger.** The skill asks Claude to suggest a name after 5-6 exchanges or at a natural conclusion, whichever comes first. This works more reliably than trying to name on the first message (where Claude tends to jump straight into the task), but it's still a soft instruction competing with the conversation's momentum. If you notice a chat unnamed, just say "name this chat" and it'll catch up.
+- **Daily summaries depend on conversation search.** Claude's `recent_chats` tool can only pull 20 conversations at a time. If you've had a very heavy day (30+ chats), the summary might miss some. You can say "keep going" or "check for more" and it'll paginate.
+- **Memory has a 30-slot limit.** If you use other skills or memory edits alongside this one, the output logging can fill up. The skill suggests cleanups when it's getting full, but it's worth being aware of.
+
 ## License
 
-Free to use, modify, and share. No attribution required.
+Licensed under [Apache 2.0](../LICENSE). Use it, modify it, build on it. Just keep the notice.
