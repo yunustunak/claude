@@ -1,93 +1,66 @@
-# Chat Hygiene Skill for Claude Projects
+# Claude Skills
 
-**Keep your Claude conversations organised without thinking about it.**
+## Why this exists
 
-If you use Claude heavily — running multiple conversations in parallel across work, projects, and life — things get messy fast. This skill gives Claude three simple habits:
+I use Claude a lot. Not casually. Deeply. Across work, side projects, writing, automation, research, life admin. On a busy day that's 15-20 parallel conversations, and after a week of that, finding anything becomes impossible.
 
-1. **Names every chat** with a consistent `DDMMYY | Label` format so you can actually find things later
-2. **Generates daily summaries** on demand, pulling together everything you worked on across all conversations into a single markdown document with open threads and artifact tracking
-3. **Logs significant outputs** to Claude's memory so it can reference past work even without summaries
+So I started building skills. Small instruction sets that give Claude specific habits: naming my chats consistently, summarising what I worked on across all conversations at end of day, logging important outputs to memory so they're findable weeks later. Practical things that compound.
 
-## Installation
+Some of these are specific to my work and don't make sense to share. But the ones that solve universal problems, the ones where I kept thinking "everyone who uses Claude heavily would benefit from this", I've pulled out, stripped of personal context, and put here.
 
-1. Open a **Claude Project** (on claude.ai or the Claude app)
-2. Go to **Project Knowledge** → **Add content** → **Add custom instructions**
-3. Paste the contents of `SKILL.md` into the custom instructions
-
-That's it. Claude will start suggesting chat names and will respond to "daily summary" or "wrap up" by generating a comprehensive summary.
-
-## Personalisation
-
-After installing, you can tell Claude things like:
-
-- *"My summary categories should be: Client Work, Internal, Side Projects, Learning"*
-- *"Use ISO date format for chat names"*
-- *"I prefer weekly summaries instead of daily"*
-
-Claude will save these preferences to memory and apply them going forward.
-
-## Trigger Phrases
-
-| What you say | What happens |
-|---|---|
-| *(conversation reaches 5-6 exchanges)* | Claude suggests a chat name based on what actually happened |
-| *(task wraps up naturally)* | Claude suggests a chat name if one hasn't been set |
-| "name this chat" | Claude suggests a chat name on demand |
-| "daily summary" / "wrap up" / "what did we do today" | Claude generates a dated summary of all work since the last summary |
-| *(produce a significant artifact)* | Claude logs it to memory automatically |
-
-## Example Daily Summary
-
-```markdown
-# Daily Summary — 07.02.2026
-
-_Covering activity since: 06.02.2026_
-
-## 💼 Work
-- **Client proposal drafted**: Acme Corp engagement scope and pricing — sent for review
-- **Team standup notes**: Captured action items from Thursday sync
-
-## 💡 Projects & Ideas
-- **Landing page prototype**: Built React component with Tailwind styling
-- **Market research**: Analysed 5 competitor pricing models
-
-## 🔧 Other
-- **Flight rebooking**: Found alternative routes for March trip, saved comparison
+These aren't polished products. They're working tools from someone who spends most of his day inside Claude and keeps finding new ways to make that work better. If they save you 10 minutes a day or stop you losing track of something important, they've done their job.
 
 ---
 
-## Open Threads
-- [ ] Acme proposal — awaiting feedback from Sarah
-- [ ] Landing page — needs mobile responsive pass
-- [ ] Competitor analysis — missing data for 2 companies
+A collection of reusable skills for Claude Projects. Each skill is a set of instructions that gives Claude a specific capability. Paste it into a project's custom instructions and it just works.
 
-## Key Artifacts Produced
-| Artifact | Chat | Status |
-|----------|------|--------|
-| Acme Corp proposal (docx) | 070226 \| Client Proposal Acme | Complete |
-| Landing page prototype (jsx) | 070226 \| Landing Page Build | Draft |
-| Competitor pricing matrix | 060226 \| Market Research | In Progress |
-```
+## What's a skill?
 
-## Tips
+A skill is a markdown file (`SKILL.md`) that teaches Claude how to do something specific. Unlike one-off prompts, skills are **persistent** — they live in your project and apply to every conversation within it. Think of them as plugins for Claude's behaviour.
 
-- **Run summaries at the end of your day** — they take 30 seconds and save you 10 minutes of "what was I doing?" the next morning
-- **Let the chat names compound** — after a week of named chats, searching your history becomes dramatically easier
-- **Customise your categories** — the defaults are fine, but categories that match your actual work streams make summaries much more useful
-- **Memory logging is automatic** — you don't need to ask for it. When you produce something significant, Claude notes it down
+Skills work best when they're:
+- **Triggered by natural language** — you shouldn't need to remember special commands
+- **Opinionated but configurable** — good defaults, easy to personalise
+- **Composable** — multiple skills can coexist in the same project
 
-## Works Best With
+## How to install a skill
 
-- Claude Pro, Team, or Enterprise (needs Projects)
-- Heavy parallel conversation usage (5+ chats/day)
-- People who context-switch between multiple work streams
+1. Open a **Claude Project** on [claude.ai](https://claude.ai) or the Claude app
+2. Go to **Project Knowledge** → **Add content** → **Add custom instructions**
+3. Paste the contents of the skill's `SKILL.md` file
 
-## Known Limitations
+You can install multiple skills in the same project by pasting them one after another into the custom instructions. Claude handles the rest.
 
-- **Chat naming doesn't always trigger.** The skill asks Claude to suggest a name after 5-6 exchanges or at a natural conclusion, whichever comes first. This works more reliably than trying to name on the first message (where Claude tends to jump straight into the task), but it's still a soft instruction competing with the conversation's momentum. If you notice a chat unnamed, just say "name this chat" and it'll catch up.
-- **Daily summaries depend on conversation search.** Claude's `recent_chats` tool can only pull 20 conversations at a time. If you've had a very heavy day (30+ chats), the summary might miss some. You can say "keep going" or "check for more" and it'll paginate.
-- **Memory has a 30-slot limit.** If you use other skills or memory edits alongside this one, the output logging can fill up. The skill suggests cleanups when it's getting full, but it's worth being aware of.
+## Using multiple skills together
+
+Claude Projects support up to ~15,000 words of custom instructions. Most skills are 1,000-2,000 words, so you can comfortably stack 5-8 skills in a single project. A few tips:
+
+- **No conflicts** — skills are designed to trigger on different phrases and contexts, so they stay out of each other's way
+- **Shared memory** — skills that use Claude's memory (like chat-hygiene) share the same 30-slot memory space, so be mindful of capacity if several skills write to memory
+- **Project scoping** — memory and conversation history are scoped per project, so a skill installed in your "Work" project won't see conversations from your "Personal" project
+
+## Available Skills
+
+| Skill | What it does |
+|-------|-------------|
+| [chat-hygiene](./chat-hygiene/) | Names conversations, generates daily summaries, logs artifacts to memory |
+
+_More coming soon._
+
+## Contributing
+
+If you've built a skill that works well for you and could help others, contributions are welcome. A good skill:
+
+- Solves a recurring problem rather than a one-off task
+- Has clear trigger phrases so Claude knows when to activate it
+- Works out of the box with sensible defaults
+- Includes a README explaining what it does and how to personalise it
+
+## Requirements
+
+- Claude Pro, Team, or Enterprise plan (needs access to Projects)
+- Works with any Claude model available in Projects
 
 ## License
 
-Licensed under [Apache 2.0](../LICENSE). Use it, modify it, build on it. Just keep the notice.
+Licensed under [Apache 2.0](./LICENSE). Use it, modify it, build on it. Just keep the notice.
