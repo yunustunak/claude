@@ -4,7 +4,7 @@
 
 If you use Claude heavily — running multiple conversations in parallel across work, projects, and life — things get messy fast. This skill gives Claude three simple habits:
 
-1. **Names every chat** with a consistent `DDMMYY | Label` format so you can actually find things later
+1. **Names for every chat** - as a suggestion as Claude cannot do it itself, with a consistent `DDMMYY | Label` format so you can actually find things later
 2. **Generates daily summaries** on demand, pulling together everything you worked on across all conversations into a single markdown document with open threads and artifact tracking
 3. **Logs significant outputs** to Claude's memory so it can reference past work even without summaries
 
